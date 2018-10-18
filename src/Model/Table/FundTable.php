@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * Fund Model
  *
  * @property \App\Model\Table\UserTable|\Cake\ORM\Association\BelongsTo $User
- * @property \App\Model\Table\FundTypesTable|\Cake\ORM\Association\BelongsTo $FundTypes
+ * @property \App\Model\Table\FundTypeTable|\Cake\ORM\Association\BelongsTo $FundType
  *
  * @method \App\Model\Entity\Fund get($primaryKey, $options = [])
  * @method \App\Model\Entity\Fund newEntity($data = null, array $options = [])
@@ -42,7 +42,7 @@ class FundTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('FundTypes', [
+        $this->belongsTo('FundType', [
             'foreignKey' => 'fund_type_id',
             'joinType' => 'INNER'
         ]);
@@ -97,7 +97,7 @@ class FundTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'User'));
-        $rules->add($rules->existsIn(['fund_type_id'], 'FundTypes'));
+        $rules->add($rules->existsIn(['fund_type_id'], 'FundType'));
 
         return $rules;
     }

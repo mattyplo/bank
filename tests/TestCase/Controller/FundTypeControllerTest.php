@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\FundController;
+use App\Controller\FundTypeController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\FundController Test Case
+ * App\Controller\FundTypeController Test Case
  */
-class FundControllerTest extends IntegrationTestCase
+class FundTypeControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,8 +16,6 @@ class FundControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.fund',
-        'app.user',
         'app.fund_type'
     ];
 

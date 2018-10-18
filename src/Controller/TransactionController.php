@@ -21,7 +21,7 @@ class TransactionController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Funds', 'TransTypes']
+            'contain' => ['Fund', 'TransType']
         ];
         $transaction = $this->paginate($this->Transaction);
 
@@ -38,7 +38,7 @@ class TransactionController extends AppController
     public function view($id = null)
     {
         $transaction = $this->Transaction->get($id, [
-            'contain' => ['Funds', 'TransTypes']
+            'contain' => ['Fund', 'TransType']
         ]);
 
         $this->set('transaction', $transaction);
@@ -61,9 +61,9 @@ class TransactionController extends AppController
             }
             $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
         }
-        $funds = $this->Transaction->Funds->find('list', ['limit' => 200]);
-        $transTypes = $this->Transaction->TransTypes->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'funds', 'transTypes'));
+        $fund = $this->Transaction->Fund->find('list', ['limit' => 200]);
+        $transType = $this->Transaction->TransType->find('list', ['limit' => 200]);
+        $this->set(compact('transaction', 'fund', 'transType'));
     }
 
     /**
@@ -87,9 +87,9 @@ class TransactionController extends AppController
             }
             $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
         }
-        $funds = $this->Transaction->Funds->find('list', ['limit' => 200]);
-        $transTypes = $this->Transaction->TransTypes->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'funds', 'transTypes'));
+        $fund = $this->Transaction->Fund->find('list', ['limit' => 200]);
+        $transType = $this->Transaction->TransType->find('list', ['limit' => 200]);
+        $this->set(compact('transaction', 'fund', 'transType'));
     }
 
     /**

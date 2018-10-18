@@ -36,6 +36,8 @@ class TransactionFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['trans_id'], 'length' => []],
+            'FK_fund_id' => ['type' => 'foreign', 'columns' => ['fund_id'], 'references' => ['fund', 'fund_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'FK_trans_type_id' => ['type' => 'foreign', 'columns' => ['trans_type_id'], 'references' => ['trans_type', 'trans_type_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

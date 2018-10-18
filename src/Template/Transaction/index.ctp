@@ -8,6 +8,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Transaction'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Fund'), ['controller' => 'Fund', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Fund'), ['controller' => 'Fund', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Trans Type'), ['controller' => 'TransType', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Trans Type'), ['controller' => 'TransType', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="transaction index large-9 medium-8 columns content">
@@ -31,8 +35,8 @@
                 <td><?= h($transaction->trans_date) ?></td>
                 <td><?= $this->Number->format($transaction->trans_amt) ?></td>
                 <td><?= $this->Number->format($transaction->trans_share_amt) ?></td>
-                <td><?= $this->Number->format($transaction->fund_id) ?></td>
-                <td><?= $this->Number->format($transaction->trans_type_id) ?></td>
+                <td><?= $transaction->has('fund') ? $this->Html->link($transaction->fund->fund_id, ['controller' => 'Fund', 'action' => 'view', $transaction->fund->fund_id]) : '' ?></td>
+                <td><?= $transaction->has('trans_type') ? $this->Html->link($transaction->trans_type->trans_type_id, ['controller' => 'TransType', 'action' => 'view', $transaction->trans_type->trans_type_id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $transaction->trans_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $transaction->trans_id]) ?>

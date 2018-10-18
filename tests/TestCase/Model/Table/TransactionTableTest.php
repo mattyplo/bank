@@ -25,8 +25,8 @@ class TransactionTableTest extends TestCase
      */
     public $fixtures = [
         'app.transaction',
-        'app.funds',
-        'app.trans_types'
+        'app.fund',
+        'app.trans_type'
     ];
 
     /**

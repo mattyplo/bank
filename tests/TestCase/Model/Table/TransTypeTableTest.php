@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\FundTable;
+use App\Model\Table\TransTypeTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\FundTable Test Case
+ * App\Model\Table\TransTypeTable Test Case
  */
-class FundTableTest extends TestCase
+class TransTypeTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\FundTable
+     * @var \App\Model\Table\TransTypeTable
      */
-    public $Fund;
+    public $TransType;
 
     /**
      * Fixtures
@@ -24,9 +24,7 @@ class FundTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.fund',
-        'app.user',
-        'app.fund_type'
+        'app.trans_type'
     ];
 
     /**
@@ -37,8 +35,8 @@ class FundTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Fund') ? [] : ['className' => FundTable::class];
-        $this->Fund = TableRegistry::getTableLocator()->get('Fund', $config);
+        $config = TableRegistry::getTableLocator()->exists('TransType') ? [] : ['className' => TransTypeTable::class];
+        $this->TransType = TableRegistry::getTableLocator()->get('TransType', $config);
     }
 
     /**
@@ -48,7 +46,7 @@ class FundTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Fund);
+        unset($this->TransType);
 
         parent::tearDown();
     }
@@ -69,16 +67,6 @@ class FundTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

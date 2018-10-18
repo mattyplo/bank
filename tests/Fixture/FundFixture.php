@@ -33,12 +33,13 @@ class FundFixture extends TestFixture
         'fund_crnt_value' => ['type' => 'decimal', 'length' => 10, 'precision' => 0, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
         'num_shares' => ['type' => 'decimal', 'length' => 10, 'precision' => 0, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
         '_indexes' => [
-            'user_key' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
             'fund_type_id' => ['type' => 'index', 'columns' => ['fund_type_id'], 'length' => []],
+            'FK_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['fund_id'], 'length' => []],
-            'fund_ibfk_1' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['user', 'user_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'FK_fund_type_id' => ['type' => 'foreign', 'columns' => ['fund_type_id'], 'references' => ['fund_type', 'fund_type_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'FK_user_id' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['user', 'user_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

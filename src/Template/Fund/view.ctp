@@ -13,6 +13,8 @@
         <li><?= $this->Html->link(__('New Fund'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'User', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Fund Type'), ['controller' => 'FundType', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Fund Type'), ['controller' => 'FundType', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="fund view large-9 medium-8 columns content">
@@ -31,12 +33,12 @@
             <td><?= h($fund->fund_name) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Fund Id') ?></th>
-            <td><?= $this->Number->format($fund->fund_id) ?></td>
+            <th scope="row"><?= __('Fund Type') ?></th>
+            <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type_id, ['controller' => 'FundType', 'action' => 'view', $fund->fund_type->fund_type_id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Fund Type Id') ?></th>
-            <td><?= $this->Number->format($fund->fund_type_id) ?></td>
+            <th scope="row"><?= __('Fund Id') ?></th>
+            <td><?= $this->Number->format($fund->fund_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Interest Rate') ?></th>

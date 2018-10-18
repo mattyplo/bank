@@ -21,7 +21,7 @@ class FundController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['User', 'FundTypes']
+            'contain' => ['User', 'FundType']
         ];
         $fund = $this->paginate($this->Fund);
 
@@ -38,7 +38,7 @@ class FundController extends AppController
     public function view($id = null)
     {
         $fund = $this->Fund->get($id, [
-            'contain' => ['User', 'FundTypes']
+            'contain' => ['User', 'FundType']
         ]);
 
         $this->set('fund', $fund);
@@ -62,8 +62,8 @@ class FundController extends AppController
             $this->Flash->error(__('The fund could not be saved. Please, try again.'));
         }
         $user = $this->Fund->User->find('list', ['limit' => 200]);
-        $fundTypes = $this->Fund->FundTypes->find('list', ['limit' => 200]);
-        $this->set(compact('fund', 'user', 'fundTypes'));
+        $fundType = $this->Fund->FundType->find('list', ['limit' => 200]);
+        $this->set(compact('fund', 'user', 'fundType'));
     }
 
     /**
@@ -88,8 +88,8 @@ class FundController extends AppController
             $this->Flash->error(__('The fund could not be saved. Please, try again.'));
         }
         $user = $this->Fund->User->find('list', ['limit' => 200]);
-        $fundTypes = $this->Fund->FundTypes->find('list', ['limit' => 200]);
-        $this->set(compact('fund', 'user', 'fundTypes'));
+        $fundType = $this->Fund->FundType->find('list', ['limit' => 200]);
+        $this->set(compact('fund', 'user', 'fundType'));
     }
 
     /**

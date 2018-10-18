@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Transaction Model
  *
- * @property \App\Model\Table\FundsTable|\Cake\ORM\Association\BelongsTo $Funds
- * @property \App\Model\Table\TransTypesTable|\Cake\ORM\Association\BelongsTo $TransTypes
+ * @property \App\Model\Table\FundTable|\Cake\ORM\Association\BelongsTo $Fund
+ * @property \App\Model\Table\TransTypeTable|\Cake\ORM\Association\BelongsTo $TransType
  *
  * @method \App\Model\Entity\Transaction get($primaryKey, $options = [])
  * @method \App\Model\Entity\Transaction newEntity($data = null, array $options = [])
@@ -38,11 +38,11 @@ class TransactionTable extends Table
         $this->setDisplayField('trans_id');
         $this->setPrimaryKey('trans_id');
 
-        $this->belongsTo('Funds', [
+        $this->belongsTo('Fund', [
             'foreignKey' => 'fund_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('TransTypes', [
+        $this->belongsTo('TransType', [
             'foreignKey' => 'trans_type_id',
             'joinType' => 'INNER'
         ]);
@@ -87,8 +87,8 @@ class TransactionTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['fund_id'], 'Funds'));
-        $rules->add($rules->existsIn(['trans_type_id'], 'TransTypes'));
+        $rules->add($rules->existsIn(['fund_id'], 'Fund'));
+        $rules->add($rules->existsIn(['trans_type_id'], 'TransType'));
 
         return $rules;
     }
