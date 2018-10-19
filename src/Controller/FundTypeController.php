@@ -58,7 +58,7 @@ class FundTypeController extends AppController
             }
             $this->Flash->error(__('The fund type could not be saved. Please, try again.'));
         }
-        $this->set(compact('fundType'));
+        $this->set(compact('fund', 'user', 'fundType'));
     }
 
     /**
