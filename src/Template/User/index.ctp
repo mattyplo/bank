@@ -8,6 +8,10 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Fund'), ['controller' => 'Fund', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Fund Type'), ['controller' => 'FundType', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Fund Type'), ['controller' => 'FundType', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="user index large-9 medium-8 columns content">
