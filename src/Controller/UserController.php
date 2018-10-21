@@ -18,6 +18,7 @@ class UserController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
     public function index()
     {
         $user = $this->paginate($this->User);
