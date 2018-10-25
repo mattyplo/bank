@@ -18,7 +18,7 @@ use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
-
+/*
 $this->layout = false;
 
 if (!Configure::read('debug')) :
@@ -26,8 +26,11 @@ if (!Configure::read('debug')) :
         'Please replace src/Template/Pages/home.ctp with your own version or re-enable debug mode.'
     );
 endif;
+*/
 
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +50,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 <body class="home">
 
 <header class="row">
-    <div class="header-image"><?= $this->Html->image('cake.logo.svg') ?></div>
+    <!--<div class="header-image"><?= $this->Html->image('cake.logo.svg') ?></div> -->
     <div class="header-title">
         <h1>Welcome to CakePHP <?= Configure::version() ?> Red Velvet. Build fast. Grow solid.</h1>
     </div>
@@ -194,7 +197,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     </div>
     <hr/>
 </div>
-
+<!--
 <div class="row">
     <div class="columns large-4">
         <i class="icon support">P</i>
@@ -271,6 +274,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         </ul>
     </div>
 </div>
-
+-->
 </body>
 </html>
