@@ -13,7 +13,7 @@
     <?php foreach ($funds as $fund): ?>
     <tr>
         <td>
-            <?= $this->Html->link($fund->fund_index, ['action' => 'view', $fund->slug]) ?>
+            <?= $this->Html->link($fund->fund_index, ['action' => 'view', $fund->fund_id]) ?>
         </td>
         <td>
             <?= $fund->fund_index ?>

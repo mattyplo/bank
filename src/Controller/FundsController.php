@@ -21,7 +21,7 @@ class FundsController extends AppController
     
     public function view($fund_id = null)
     {
-        $fund = $this->Funds->findByFund_Id($fund_id)->firstOrFail();
+        $fund = $this->Funds->findByFund_id($fund_id)->firstOrFail();
         $this->set(compact('fund'));
     }
     
