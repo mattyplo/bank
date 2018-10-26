@@ -10,18 +10,18 @@ class FundsController extends AppController
         parent::initialize();
 
         $this->loadComponent('Paginator');
+        $this->loadComponent('Flash');
     }
     
     public function index()
     {
-        $this->loadComponent('Paginator');
         $funds = $this->Paginator->paginate($this->Funds->find());
         $this->set(compact('funds'));
     }
     
-    public function view($slug = null)
+    public function view($fund_id = null)
     {
-        $fund = $this->Funds->findBySlug($slug)->firstOrFail();
+        $fund = $this->Funds->findByFund_Id($fund_id)->firstOrFail();
         $this->set(compact('fund'));
     }
     

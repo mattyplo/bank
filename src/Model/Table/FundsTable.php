@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Utility\Text;
 
 /**
  * Funds Model
@@ -100,5 +101,13 @@ class FundsTable extends Table
         $rules->add($rules->existsIn(['fund_type_id'], 'FundTypes'));
 
         return $rules;
+    }
+    
+    public function beforeSave($event, $entity, $options)
+    {
+        if($entity->isNew() && !$entity->slug) {
+            $sluggedTitle = Text::slug($entity->title);
+            $entity->slug = substr($sluggedTitle, 0, 191);
+        }
     }
 }

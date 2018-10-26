@@ -4,8 +4,8 @@
 <?= $this->Html->link('Add Fund', ['action' => 'add']) ?>
 <table>
     <tr>
-        <th>Title</th>
-        <th>Created</th>
+        <th>Index</th>
+        <th></th>
     </tr>
 
     <!-- Here is where we iterate through our $articles query object, printing out article info -->
@@ -13,10 +13,10 @@
     <?php foreach ($funds as $fund): ?>
     <tr>
         <td>
-            <?= $this->Html->link($fund->title, ['action' => 'view', $fund->slug]) ?>
+            <?= $this->Html->link($fund->fund_index, ['action' => 'view', $fund->slug]) ?>
         </td>
         <td>
-            <?= $fund->created->format(DATE_RFC850) ?>
+            <?= $fund->fund_index ?>
         </td>
     </tr>
     <?php endforeach; ?>
