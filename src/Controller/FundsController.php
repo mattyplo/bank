@@ -56,7 +56,6 @@ class FundsController extends AppController
             $fund = $this->Funds->patchEntity($fund, $this->request->getData());
             if ($this->Funds->save($fund)) {
                 $this->Flash->success(__('The fund has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The fund could not be saved. Please, try again.'));
@@ -110,5 +109,10 @@ class FundsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function export($limit = 100) {
+        $funds = $this->Funds->find('all')->limit($limit);
+        $this->set('funds', $funds);
     }
 }
