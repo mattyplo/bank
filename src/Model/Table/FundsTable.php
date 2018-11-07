@@ -42,6 +42,10 @@ class FundsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        
+        //New code 11/6/2018
+        
+        
         $this->belongsTo('FundTypes', [
             'foreignKey' => 'fund_type_id',
             'joinType' => 'INNER'

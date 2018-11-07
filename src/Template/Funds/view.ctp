@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Fund Type') ?></th>
-            <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type_id, ['controller' => 'FundTypes', 'action' => 'view', $fund->fund_type->fund_type_id]) : '' ?></td>
+            <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type, ['controller' => 'FundTypes', 'action' => 'view', $fund->fund_type->fund_type_id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fund Id') ?></th>

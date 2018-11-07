@@ -36,6 +36,8 @@ class UsersTable extends Table
         $this->setPrimaryKey('user_id');
     }
 
+    
+    
     /**
      * Default validation rules.
      *

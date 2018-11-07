@@ -40,6 +40,8 @@ class FundsController extends AppController
         $fund = $this->Funds->get($id, [
             'contain' => ['Users', 'FundTypes']
         ]);
+        
+        
 
         $this->set('fund', $fund);
     }
@@ -52,6 +54,7 @@ class FundsController extends AppController
     public function add()
     {
         $fund = $this->Funds->newEntity();
+        
         if ($this->request->is('post')) {
             $fund = $this->Funds->patchEntity($fund, $this->request->getData());
             if ($this->Funds->save($fund)) {
