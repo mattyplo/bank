@@ -64,8 +64,12 @@ class FundsController extends AppController
             $this->Flash->error(__('The fund could not be saved. Please, try again.'));
         }
         $users = $this->Funds->Users->find('list', ['limit' => 200]);
-        $fundTypes = $this->Funds->FundTypes->find('list', ['limit' => 200]);
-        $this->set(compact('fund', 'users', 'fundTypes'));
+        // Added in 'valueField' => 'fund_type' 
+        // This got the fund_type and not fund_type_id to pop up in the view!!!
+        $fundTypes = $this->Funds->FundTypes->find('list', ['limit' => 200, 'valueField' => 'fund_type']);
+        $data = $fundTypes->toArray();
+        
+        $this->set(compact('fund', 'users', 'fundTypes', 'data'));
     }
 
     /**
