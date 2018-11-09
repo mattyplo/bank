@@ -129,7 +129,7 @@ class FundsController extends AppController
         if (in_array($action, ['add'])) {
             return true;
         }
-    echo $this->Funds->find('all');
+    //echo $this->Funds->find('all');
     //$fund = $this->request->getParam('fund_id');
     //$user = $this->Funds->findByUserId($fund)->first();
     //$fund = $this->Funds->findByFund_id
