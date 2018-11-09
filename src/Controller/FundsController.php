@@ -122,4 +122,21 @@ class FundsController extends AppController
         $funds = $this->Funds->find('all')->limit($limit);
         $this->set('funds', $funds);
     }
+    
+    public function isAuthorized($user)
+    {
+        $action = $this->request->getParam('action');
+        if (in_array($action, ['add'])) {
+            return true;
+        }
+    echo $this->Funds->find('all');
+    //$fund = $this->request->getParam('fund_id');
+    //$user = $this->Funds->findByUserId($fund)->first();
+    //$fund = $this->Funds->findByFund_id
+    //$fund = $this->Funds->findByFundId
+        
+    //return $fund->user_id === $user['user_id'];
+        
+    }
+       
 }
