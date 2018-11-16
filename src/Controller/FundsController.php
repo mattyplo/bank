@@ -23,9 +23,17 @@ class FundsController extends AppController
         $this->paginate = [
             'contain' => ['Users', 'FundTypes']
         ];
-        $funds = $this->paginate($this->Funds);
-
+        
+        $user = $this->Auth->user('user_id'); 
+       
+            
+        $query = $this->Funds->find('all')->where(['users.user_id' => $user]);
+        
+        //$funds = $this->paginate($this->Funds);
+        $this->set('funds', $this->paginate($query));
+        
         $this->set(compact('funds'));
+        
     }
 
     /**
