@@ -34,18 +34,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><?php echo $this->Html->link('Home', '/'); ?></li>
-            </ul>
-        </div>
-    </nav>
+
+     <nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Investment Tracker</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><?= $this->Html->link(__('Login'), ['controller' => 'users', 'action' => 'login']); ?></li>
+      <li><?= $this->Html->link(__('Logout'), ['controller' => 'users', 'action' => 'logout']); ?></li>
+      <li><?= $this->Html->link(__('Funds'), ['controller' => 'funds', 'action' => 'index']); ?></li>
+      <li><?= $this->Html->link(__('Users'), ['controller' => 'users', 'action' => 'index']); ?></li>
+      <li><?= $this->Html->link(__('Transactions'), ['controller' => 'transactions', 'action' => 'index']); ?></li>
+    </ul>
+  </section>
+</nav>
+>>>>>>> 11_08
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>

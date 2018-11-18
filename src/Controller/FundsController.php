@@ -23,9 +23,17 @@ class FundsController extends AppController
         $this->paginate = [
             'contain' => ['Users', 'FundTypes']
         ];
-        $funds = $this->paginate($this->Funds);
-
+        
+        $user = $this->Auth->user('user_id'); 
+       
+            
+        $query = $this->Funds->find('all')->where(['users.user_id' => $user]);
+        
+        //$funds = $this->paginate($this->Funds);
+        $this->set('funds', $this->paginate($query));
+        
         $this->set(compact('funds'));
+        
     }
 
     /**
@@ -122,4 +130,21 @@ class FundsController extends AppController
         $funds = $this->Funds->find('all')->limit($limit);
         $this->set('funds', $funds);
     }
+    
+    public function isAuthorized($user)
+    {
+        $action = $this->request->getParam('action');
+        if (in_array($action, ['add'])) {
+            return true;
+        }
+    //echo $this->Funds->find('all');
+    //$fund = $this->request->getParam('fund_id');
+    //$user = $this->Funds->findByUserId($fund)->first();
+    //$fund = $this->Funds->findByFund_id
+    //$fund = $this->Funds->findByFundId
+        
+    //return $fund->user_id === $user['user_id'];
+        
+    }
+       
 }
