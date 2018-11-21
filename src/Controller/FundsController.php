@@ -54,8 +54,8 @@ class FundsController extends AppController
         $http = new Client();
         
        
-        // Simple get
-        $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
+        $fundIndex = $fund->fund_index;
+        $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' . $fundIndex . '&apikey=L1G9JSZ77QFGSV8A');
         $json = $response->json;
         
         
@@ -74,22 +74,34 @@ class FundsController extends AppController
         
        
         // Simple get
-        $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
-        $json = $response->json;
+        //$response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
+        //$json = $response->json;
         
-        $this->set('response', $json);
+        //$this->set('response', $json);
+        $isPost = false;
+        $response = "";
         $test = '';
         $symbol = new LookUpFundForm();
         if ($this->request->is('post')) {
             if ($symbol->execute($this->request->getData())) {
                 $test = $this->request->getData();
+                $index = $test["fund_index"];    
+                $address = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" . $index . "&apikey=L1G9JSZ77QFGSV8A";
+                $response = $http->get($address);
+                $json = $response->json;
+                $isPost = true;
                 
+                $this->set('response', $json);
                 $this->Flash->success('We will look up the symbol for you!');
             } else {
                 $this->Flash->error('There was a problem submitting your form.');
             }
         }
-        $this->set('test', $test);
+        
+        $this->set('isPost', $isPost);
+        //$this->set('response', $json);
+        //$this->set('index', $index);
+        //$this->set('test', $test);
         $this->set('symbol', $symbol);
     }
     

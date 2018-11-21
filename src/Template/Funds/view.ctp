@@ -46,7 +46,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Fund Crnt Value') ?></th>
-            <td><?= $this->Number->format($fund->fund_crnt_value) ?></td>
+            <td><?= $response["Global Quote"]["05. price"]; ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Num Shares') ?></th>
