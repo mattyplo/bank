@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Http\Client;
+use App\Form\LookUpFundForm;
 /**
  * Funds Controller
  *
@@ -68,6 +69,30 @@ class FundsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
+    public function lookUp() {
+        $http = new Client();
+        
+       
+        // Simple get
+        $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
+        $json = $response->json;
+        
+        $this->set('response', $json);
+        $test = '';
+        $symbol = new LookUpFundForm();
+        if ($this->request->is('post')) {
+            if ($symbol->execute($this->request->getData())) {
+                $test = $this->request->getData();
+                
+                $this->Flash->success('We will look up the symbol for you!');
+            } else {
+                $this->Flash->error('There was a problem submitting your form.');
+            }
+        }
+        $this->set('test', $test);
+        $this->set('symbol', $symbol);
+    }
+    
     public function add()
     {
         $fund = $this->Funds->newEntity();
@@ -144,7 +169,7 @@ class FundsController extends AppController
     public function isAuthorized($user)
     {
         $action = $this->request->getParam('action');
-        if (in_array($action, ['add'])) {
+        if (in_array($action, ['add', 'edit', 'lookUp'])) {
             return true;
         }
     //echo $this->Funds->find('all');
