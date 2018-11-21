@@ -19,7 +19,7 @@
     <fieldset>
         <legend><?= __('Add Fund') ?></legend>
         <?php
-            echo $this->Form->control('user_id', ['options' => $users]);
+            echo $user;
             echo $this->Form->control('fund_index');
             echo $this->Form->control('fund_name');
             echo $this->Form->control('fund_type_id', ['options' => $fundTypes]);
