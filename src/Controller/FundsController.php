@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Http\Client;
 /**
  * Funds Controller
  *
@@ -50,8 +50,16 @@ class FundsController extends AppController
             'contain' => ['Users', 'FundTypes']
         ]);
         
+        $http = new Client();
         
-
+       
+        // Simple get
+        $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
+        $json = $response->json;
+        
+        
+        $this->set('response', $json); 
+        
         $this->set('fund', $fund);
     }
 
