@@ -61,9 +61,11 @@ class TransactionsController extends AppController
             }
             $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
         }
-        $funds = $this->Transactions->Funds->find('list', ['limit' => 200]);
-        $transTypes = $this->Transactions->TransTypes->find('list', ['limit' => 200]);
+        $funds = $this->Transactions->Funds->find('list', ['limit' => 200, 'valueField' => 'fund_index']);
+        $transTypes = $this->Transactions->TransTypes->find('list', ['limit' => 200, 'valueField' => 'trans_name']);
         $this->set(compact('transaction', 'funds', 'transTypes'));
+        
+        //$fundTypes = $this->Funds->FundTypes->find('list', ['limit' => 200, 'valueField' => 'fund_type']);
     }
 
     /**
@@ -110,5 +112,13 @@ class TransactionsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function isAuthorized($user)
+    {
+        $action = $this->request->getParam('action');
+        if (in_array($action, ['add', 'edit', 'lookUp'])) {
+            return true;
+        }
     }
 }

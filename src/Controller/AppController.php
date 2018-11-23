@@ -45,7 +45,10 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
-
+        
+        // load self build component to look up fund info
+        $this->loadComponent('FundLookup');
+        
         $this->loadComponent('Auth', [
             'authorize' => 'Controller',
             'authenticate' => [

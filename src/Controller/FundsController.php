@@ -27,15 +27,12 @@ class FundsController extends AppController
         
         $user = $this->Auth->user('user_id'); 
        
-            
         $query = $this->Funds->find('all')->where(['users.user_id' => $user]);
         
         //$funds = $this->paginate($this->Funds);
         $this->set('funds', $this->paginate($query));
         
         $this->set(compact('funds'));
-        
-        
     }
 
     /**
@@ -86,9 +83,10 @@ class FundsController extends AppController
             if ($symbol->execute($this->request->getData())) {
                 $test = $this->request->getData();
                 $index = $test["fund_index"];    
-                $address = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" . $index . "&apikey=L1G9JSZ77QFGSV8A";
-                $response = $http->get($address);
-                $json = $response->json;
+                //$address = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" . $index . "&apikey=L1G9JSZ77QFGSV8A";
+                //$response = $http->get($address);
+                //$json = $response->json;
+                $json = $this->FundLookup->getFundInfo($index);
                 $isPost = true;
                 
                 $this->set('response', $json);
