@@ -8,6 +8,20 @@ use Cake\Http\Client;
 
 class FundLookupComponent extends Component
 {
+    public function getFundName($symbol){
+        $http = new Client();
+        $address = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" . $symbol . "&apikey=L1G9JSZ77QFGSV8A";
+        $response = $http->get($address);
+        $json = $response->json;
+        //$results = json_encode($json); 
+        $name = $json["bestMatches"][0]["2. name"];
+        
+        //$nameEncoded = json_encode($name);
+        return ($name);
+        
+        
+    }
+    
     public function getFundInfo($symbol)
     {
         $http = new Client();

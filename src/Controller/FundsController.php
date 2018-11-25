@@ -67,12 +67,6 @@ class FundsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function lookUp() {
-        $http = new Client();
-        
-       
-        // Simple get
-        //$response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GOOG&apikey=L1G9JSZ77QFGSV8A');
-        //$json = $response->json;
         
         //$this->set('response', $json);
         $isPost = false;
@@ -87,8 +81,10 @@ class FundsController extends AppController
                 //$response = $http->get($address);
                 //$json = $response->json;
                 $json = $this->FundLookup->getFundInfo($index);
+                $name = $this->FundLookup->getFundName($index);
                 $isPost = true;
                 
+                $this->set('name', $name);
                 $this->set('response', $json);
                 $this->Flash->success('We will look up the symbol for you!');
             } else {
@@ -106,9 +102,14 @@ class FundsController extends AppController
     public function add()
     {
         $fund = $this->Funds->newEntity();
+        $user_id = $this->Auth->user('user_id');
         
         if ($this->request->is('post')) {
+            //$index = $this->request->getData('fund_index');
+            
             $fund = $this->Funds->patchEntity($fund, $this->request->getData());
+            $fund->user_id = $user_id;
+            $fund->fund_name = $this->FundLookup->getFundName($fund->fund_index);
             if ($this->Funds->save($fund)) {
                 $this->Flash->success(__('The fund has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -179,7 +180,7 @@ class FundsController extends AppController
     public function isAuthorized($user)
     {
         $action = $this->request->getParam('action');
-        if (in_array($action, ['add', 'edit', 'lookUp'])) {
+        if (in_array($action, ['add', 'edit', 'lookUp', 'delete'])) {
             return true;
         }
     //echo $this->Funds->find('all');

@@ -22,8 +22,12 @@
     <br>
     <br>
     
+    <?= $name; ?>
+    <?= getType($name); ?>
    
 <?php
+    
+    echo $response["Global Quote"]["01. symbol"];
     if ($isPost) {
     foreach($response as $res) {
     $poop = json_encode($res); 
