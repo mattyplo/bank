@@ -101,16 +101,28 @@ class FundsController extends AppController
     
     public function add()
     {
+        
+        $query = $this->Funds->find('all', [
+            'order' => ['Funds.fund_id' => 'DESC']
+            ]);
+        
+        
         $fund = $this->Funds->newEntity();
+        //$transaction = $this->Transactions->newEntity();
+        
         $user_id = $this->Auth->user('user_id');
         
         if ($this->request->is('post')) {
             //$index = $this->request->getData('fund_index');
             
+            // put the last index inserted here!
+            
             $fund = $this->Funds->patchEntity($fund, $this->request->getData());
             $fund->user_id = $user_id;
             $fund->fund_name = $this->FundLookup->getFundName($fund->fund_index);
             if ($this->Funds->save($fund)) {
+                // Capture the new funds id so we can create a new transaction
+                $id = $fund->fund_id;
                 $this->Flash->success(__('The fund has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }

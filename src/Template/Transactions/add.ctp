@@ -10,8 +10,6 @@
         <li><?= $this->Html->link(__('List Transactions'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Funds'), ['controller' => 'Funds', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Fund'), ['controller' => 'Funds', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Trans Types'), ['controller' => 'TransTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Trans Type'), ['controller' => 'TransTypes', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="transactions form large-9 medium-8 columns content">
