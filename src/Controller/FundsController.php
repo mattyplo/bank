@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Http\Client;
 use App\Form\LookUpFundForm;
+use App\Model\Entity\Transaction;
+use Cake\I18n\Time;
 /**
  * Funds Controller
  *
@@ -122,8 +124,25 @@ class FundsController extends AppController
             $fund->fund_name = $this->FundLookup->getFundName($fund->fund_index);
             if ($this->Funds->save($fund)) {
                 // Capture the new funds id so we can create a new transaction
+                
+                // Capture the date
                 $id = $fund->fund_id;
-                $this->Flash->success(__('The fund has been saved.'));
+                $this->loadModel('Transactions');
+                $now = Time::now();
+                // output the just the date, below.
+                // $now->i18nFormat('yyyy-MM-dd')
+                /*
+                $transaction = new Transaction([
+                    'id' => 1,
+                    'trans_date' => ,
+                    'trans_amt' => ,
+                    'trans_share_amt' => ,
+                    'fund_id' => ,
+                    'trans_type_id' => 
+                ]);
+                */
+                
+                $this->Flash->success(__('Your fund has been successfully added'));
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The fund could not be saved. Please, try again.'));
