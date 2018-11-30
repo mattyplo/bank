@@ -6,6 +6,8 @@ use Cake\Http\Client;
 use App\Form\LookUpFundForm;
 use App\Model\Entity\Transaction;
 use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
+
 /**
  * Funds Controller
  *
@@ -131,16 +133,30 @@ class FundsController extends AppController
                 $now = Time::now();
                 // output the just the date, below.
                 // $now->i18nFormat('yyyy-MM-dd')
+                
                 /*
-                $transaction = new Transaction([
-                    'id' => 1,
-                    'trans_date' => ,
-                    'trans_amt' => ,
-                    'trans_share_amt' => ,
-                    'fund_id' => ,
-                    'trans_type_id' => 
-                ]);
+                $transactionsTable = TableRegistry::get('Transactions');
+                $transaction = $transactionsTable->newEntity(); 
+                $transaction->trans_date = $now;
+                $transaction->trans_amt = $fund->fund_crnt_value;
+                $transaction->trans_num_shares = $fund->num_shares;
+                $transaction->fund_id = $id;
+                $transaction->trans_type_id = 5;
+                $transactionsTable->save($transaction);
                 */
+                
+                
+                $data = [
+                    'trans_date' => $now,
+                    'trans_amt' => $fund->fund_crnt_value,
+                    'trans_num_shares' => $fund->num_shares,
+                    'fund_id' => $id,
+                    'trans_type_id' => 5 
+                ];
+                
+                $entity = $this->Transactions->newEntity();
+                $this->Transactions->patchEntity($entity, $data);
+                $this->Transactions->save($entity);
                 
                 $this->Flash->success(__('Your fund has been successfully added'));
                 return $this->redirect(['action' => 'index']);
