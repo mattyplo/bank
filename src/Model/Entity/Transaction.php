@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $trans_id
  * @property \Cake\I18n\FrozenDate $trans_date
  * @property float $trans_amt
- * @property float $trans_share_amt
+ * @property float $trans_num_shares
  * @property int $fund_id
  * @property int $trans_type_id
  *
@@ -31,7 +31,7 @@ class Transaction extends Entity
     protected $_accessible = [
         'trans_date' => true,
         'trans_amt' => true,
-        'trans_share_amt' => true,
+        'trans_num_shares' => true,
         'fund_id' => true,
         'trans_type_id' => true,
         'fund' => true,

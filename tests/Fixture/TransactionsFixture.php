@@ -20,7 +20,7 @@ class TransactionsFixture extends TestFixture
         'trans_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'trans_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'trans_amt' => ['type' => 'decimal', 'length' => 10, 'precision' => 0, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
-        'trans_share_amt' => ['type' => 'decimal', 'length' => 10, 'precision' => 0, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
+        'trans_num_shares' => ['type' => 'decimal', 'length' => 10, 'precision' => 0, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
         'fund_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'trans_type_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
@@ -49,9 +49,9 @@ class TransactionsFixture extends TestFixture
         $this->records = [
             [
                 'trans_id' => 1,
-                'trans_date' => '2018-10-28',
+                'trans_date' => '2018-11-30',
                 'trans_amt' => 1.5,
-                'trans_share_amt' => 1.5,
+                'trans_num_shares' => 1.5,
                 'fund_id' => 1,
                 'trans_type_id' => 1
             ],

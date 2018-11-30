@@ -10,6 +10,7 @@
         <li><?= $this->Html->link(__('List Funds'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
+
 <div class="funds form large-9 medium-8 columns content">
     <?= $this->Form->create($fund) ?>
     <fieldset>
@@ -21,6 +22,7 @@
             echo $this->Form->control('fund_crnt_value');
             echo $this->Form->control('num_shares');
             //echo $this->Form->control('data');
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

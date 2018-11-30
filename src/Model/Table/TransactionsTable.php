@@ -71,9 +71,9 @@ class TransactionsTable extends Table
             ->notEmpty('trans_amt');
 
         $validator
-            ->decimal('trans_share_amt')
-            ->requirePresence('trans_share_amt', 'create')
-            ->notEmpty('trans_share_amt');
+            ->decimal('trans_num_shares')
+            ->requirePresence('trans_num_shares', 'create')
+            ->notEmpty('trans_num_shares');
 
         return $validator;
     }
