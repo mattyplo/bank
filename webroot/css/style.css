@@ -8,15 +8,15 @@ a:hover {
 }
 
 a {
-    color: #1798A5;
+    color: #FF530D;
 }
 
 .side-nav li a:not(.button) {
-    color: #15848F;
+    color: #FF530D;
 }
 
 .side-nav li a:not(.button):hover {
-    color: #15848F;
+    color: #FF530D;
 }
 
 header {
@@ -34,7 +34,7 @@ header .header-title {
 }
 
 legend {
-    color:#15848F;
+    color:#FF530D;
 }
 
 .row {
@@ -323,7 +323,7 @@ pre {
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #116d76;
+    background: #FF530D;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -332,7 +332,7 @@ pre {
 }
 
 .side-nav li.heading {
-    color: #1798A5;
+    color: #FF530D;
     font-size: 0.875rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -373,9 +373,9 @@ table thead tr {
 table tr th {
     padding: 0.5625rem 0.625rem;
     font-size: 0.875rem;
-    color: #1798A5;
+    color: #FF530D;
     text-align: left;
-    border-bottom: 2px solid #1798A5;
+    border-bottom: 2px solid #FF530D;
 }
 
 table tr:nth-of-type(even) {
@@ -389,7 +389,7 @@ fieldset {
 }
 
 fieldset legend {
-    border-bottom: 2px solid #1798A5;
+    border-bottom: 2px solid #FF530D;
     width: 100%;
     line-height: 2rem;
 }

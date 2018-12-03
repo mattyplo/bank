@@ -161,9 +161,9 @@ class FundsController extends AppController
                 }
                 //$errors = $entity->getErrors();
                 //$this->set('errors', $errors);
-                //return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__($errors));
+            $this->Flash->error(__('There was an error with adding your fund!  Try again, but do something differnt.'));
         }
         $users = $this->Funds->Users->find('list', ['limit' => 200]);
         $user = $this->Auth->user('first_name'); 
