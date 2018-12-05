@@ -17,12 +17,9 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('fund_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_index') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_type_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('interest_rate') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_crnt_value') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('num_shares') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -30,13 +27,10 @@
         </thead>
         <tbody>
             <?php foreach ($funds as $fund): ?>
-            <tr>
-                <td><?= $this->Number->format($fund->fund_id) ?></td>
-                <td><?= $fund->has('user') ? $this->Html->link($fund->user->user_id, ['controller' => 'Users', 'action' => 'view', $fund->user->user_id]) : '' ?></td>
+            <tr> 
                 <td><?= h($fund->fund_index) ?></td>
                 <td><?= h($fund->fund_name) ?></td>
-                <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type_id, ['controller' => 'FundTypes', 'action' => 'view', $fund->fund_type->fund_type_id]) : '' ?></td>
-                <td><?= $this->Number->format($fund->interest_rate) ?></td>
+                <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type, ['controller' => 'FundTypes', 'action' => 'view', $fund->fund_type->fund_type]) : '' ?></td>
                 <td><?= $this->Number->format($fund->fund_crnt_value) ?></td>
                 <td><?= $this->Number->format($fund->num_shares) ?></td>
                 <td class="actions">

@@ -130,10 +130,14 @@ class FundsController extends AppController
                 // Capture the date
                 $id = $fund->fund_id;
                 $this->loadModel('Transactions');
-                $now = Time::now();
+                //$now = Time::now();
                 // output the just the date, below.
-                $now->i18nFormat('yyyy-MM-dd');
-                
+                //$now->i18nFormat('yyyy-MM-dd');
+                $dat = $this->request->getData();
+                $year = $dat['year']['year'];
+                $month = $dat['month']['month'];
+                $day = $dat['day']['day'];
+                $now = $year . "-" . $month . "-" . $day;
                 /*
                 $transactionsTable = TableRegistry::get('Transactions');
                 $transaction = $transactionsTable->newEntity(); 
@@ -158,7 +162,8 @@ class FundsController extends AppController
                 $this->Transactions->patchEntity($entity, $data);
                 if ($this->Transactions->save($entity)) {
                     $this->Flash->success(__('Your fund has been successfully added'));
-                }
+                } 
+                
                 //$errors = $entity->getErrors();
                 //$this->set('errors', $errors);
                 return $this->redirect(['action' => 'index']);
