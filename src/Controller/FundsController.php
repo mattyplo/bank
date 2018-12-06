@@ -231,16 +231,29 @@ class FundsController extends AppController
         $funds = $this->Funds->find('all')->where(['funds.user_id' => $user_id]);
         $this->loadModel('Transactions');
         $transaction = $this->Transactions->newEntity();
+        //print_r($funds->toArray());
+        
+        //create an array of the fund_index that will be used to select the appropriate index for entity creation
+        $fundArray = $funds->toArray();
+        $indices = array();
+        $index = 0;
+        foreach ($fundArray as $t) {
+            $indices[] = $t['fund_index'];
+            $index ++;
+        }
         
         if ($this->request->is(['post'])) {
             $request = $this->request->getData();
             $date = $request['year']['year'] . "-" . $request['month']['month'] . "-" . $request['day']['day'];
-            $fund_id = $this->Funds->find('all')->where(['funds.user_id' => $user_id, 'funds.fund_index' => $request['fund_index']]);
+            //$index = $request['fund_index'];
+            $query = $this->Funds->find('all')->where(['funds.fund_index' => $indices[$request['fund_index']], ['funds.user_id' => $user_id]]);
+            $fund = $query->first();
+            //die($fund['fund_name']);
             $data = [
                     'trans_date' => $date,
                     'trans_amt' => $request['trans_amt'],
                     'trans_num_shares' => $request['num_shares'],
-                    'fund_id' => $fund_id,
+                    'fund_id' => $fund['fund_id'],
                     'trans_type_id' => 6 
                 ];
             $this->Transactions->patchEntity($transaction, $data);
