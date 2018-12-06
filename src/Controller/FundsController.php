@@ -226,15 +226,39 @@ class FundsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     
-    public function export($limit = 100) {
-        $funds = $this->Funds->find('all')->limit($limit);
-        $this->set('funds', $funds);
+    public function addDividend() {
+        $user_id = $this->Auth->user('user_id');
+        $funds = $this->Funds->find('all')->where(['funds.user_id' => $user_id]);
+        $this->loadModel('Transactions');
+        $transaction = $this->Transactions->newEntity();
+        
+        if ($this->request->is(['post'])) {
+            $request = $this->request->getData();
+            $date = $request['year']['year'] . "-" . $request['month']['month'] . "-" . $request['day']['day'];
+            $fund_id = $this->Funds->find('all')->where(['funds.user_id' => $user_id, 'funds.fund_index' => $request['fund_index']]);
+            $data = [
+                    'trans_date' => $date,
+                    'trans_amt' => $request['trans_amt'],
+                    'trans_num_shares' => $request['num_shares'],
+                    'fund_id' => $fund_id,
+                    'trans_type_id' => 6 
+                ];
+            $this->Transactions->patchEntity($transaction, $data);
+            if ($this->Transactions->save($transaction)) {
+                $this->Flash->success(__('The transaction has been made.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The transaction could not be made. Please, try again.'));
+        }
+       
+        $this->set(compact('funds', 'transaction'));
     }
     
     public function isAuthorized($user)
     {
         $action = $this->request->getParam('action');
-        if (in_array($action, ['add', 'edit', 'lookUp', 'delete'])) {
+        if (in_array($action, ['add', 'edit', 'lookUp', 'delete', 'addDividend'])) {
             return true;
         }
     //echo $this->Funds->find('all');

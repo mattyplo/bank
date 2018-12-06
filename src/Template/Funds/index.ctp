@@ -8,7 +8,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Fund'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Add Dividend'), ['action' => 'addDividend']) ?></li>
         
     </ul>
 </nav>
