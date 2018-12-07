@@ -51,7 +51,7 @@ class FundsController extends AppController
         $fund = $this->Funds->get($id, [
             'contain' => ['Users', 'FundTypes']
         ]);
-        
+        $price = $this->FundConsolidate->getFundTotals($fund);
         $http = new Client();
         
        
@@ -61,7 +61,7 @@ class FundsController extends AppController
         
         
         $this->set('response', $json); 
-        
+        $this->set('price', $price);
         $this->set('fund', $fund);
     }
 

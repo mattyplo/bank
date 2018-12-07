@@ -53,6 +53,7 @@
             <td><?= $this->Number->format($fund->num_shares) ?></td>
         </tr>
     </table>
+    <?= $price; ?>
     <?php foreach($response as $res) {
     $poop = json_encode($res); 
     echo $poop;

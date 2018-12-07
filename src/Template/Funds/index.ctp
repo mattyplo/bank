@@ -19,7 +19,6 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('fund_index') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('fund_type_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_crnt_value') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('num_shares') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -30,7 +29,6 @@
             <tr> 
                 <td><?= h($fund->fund_index) ?></td>
                 <td><?= h($fund->fund_name) ?></td>
-                <td><?= $fund->has('fund_type') ? $this->Html->link($fund->fund_type->fund_type, ['controller' => 'FundTypes', 'action' => 'view', $fund->fund_type->fund_type]) : '' ?></td>
                 <td><?= $this->Number->format($fund->fund_crnt_value) ?></td>
                 <td><?= $this->Number->format($fund->num_shares) ?></td>
                 <td class="actions">

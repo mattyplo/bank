@@ -64,6 +64,15 @@ class FundLookupComponent extends Component
         return $amount1 + $amount2;
         */
     }
+    
+    public function getFundPrice($symbol) {
+        $http = new Client();
+        $address = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" . $symbol . "&apikey=L1G9JSZ77QFGSV8A";
+        $response = $http->get($address);
+        $json = $response->json;
+        $name = $json['Global Quote']['05. price'];
+        return $name;
+    }
 }
 
 ?>
