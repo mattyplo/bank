@@ -22,7 +22,7 @@
                 <th scope="col"><?= $this->Paginator->sort('trans_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trans_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trans_amt') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trans_share_amt') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('trans_num_shares') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fund_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trans_type_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -34,7 +34,7 @@
                 <td><?= $this->Number->format($transaction->trans_id) ?></td>
                 <td><?= h($transaction->trans_date) ?></td>
                 <td><?= $this->Number->format($transaction->trans_amt) ?></td>
-                <td><?= $this->Number->format($transaction->trans_share_amt) ?></td>
+                <td><?= $this->Number->format($transaction->trans_num_shares) ?></td>
                 <td><?= $transaction->has('fund') ? $this->Html->link($transaction->fund->fund_id, ['controller' => 'Funds', 'action' => 'view', $transaction->fund->fund_id]) : '' ?></td>
                 <td><?= $transaction->has('trans_type') ? $this->Html->link($transaction->trans_type->trans_type_id, ['controller' => 'TransTypes', 'action' => 'view', $transaction->trans_type->trans_type_id]) : '' ?></td>
                 <td class="actions">
