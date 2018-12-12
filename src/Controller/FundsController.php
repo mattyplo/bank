@@ -30,12 +30,20 @@ class FundsController extends AppController
         ];
         
         $user = $this->Auth->user('user_id'); 
-       
         $query = $this->Funds->find('all')->where(['users.user_id' => $user]);
-        
         //$funds = $this->paginate($this->Funds);
         $this->set('funds', $this->paginate($query));
         
+        //This chunk of code gets an updated count of the number of shares each fund is comprised of and puts it in an array called $funds
+        $funds = $query->toArray();
+        //die($funds);
+        foreach ($funds as $fund) {
+            $fund_id = $fund['fund_id'];
+            $fund['num_shares'] = $this->FundLookup->getSumSharesByFundId($fund_id);
+            //echo $fund['num_shares'];
+        }
+        
+        $this->set('funds_num_shares', $funds);
         $this->set(compact('funds'));
     }
 
@@ -51,7 +59,7 @@ class FundsController extends AppController
         $fund = $this->Funds->get($id, [
             'contain' => ['Users', 'FundTypes']
         ]);
-        $price = $this->FundConsolidate->getFundTotals($fund);
+        $totalShares = $this->FundLookup->getSumShares($fund);
         $http = new Client();
         
        
@@ -61,7 +69,7 @@ class FundsController extends AppController
         
         
         $this->set('response', $json); 
-        $this->set('price', $price);
+        $this->set('price', $totalShares);
         $this->set('fund', $fund);
     }
 

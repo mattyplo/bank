@@ -48,7 +48,6 @@ class AppController extends Controller
         
         // load self build component to look up fund info
         $this->loadComponent('FundLookup');
-        $this->loadComponent('FundConsolidate');
         
         $this->loadComponent('Auth', [
             'authorize' => 'Controller',

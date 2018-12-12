@@ -64,6 +64,27 @@ class FundLookupComponent extends Component
         return $amount1 + $amount2;
         */
     }
+    public function getSumShares($fund) {
+        
+        $fundController = $this->_registry->getController();
+        $fundController->loadModel('Transactions');
+        $query = $fundController->Transactions->find('all')->where(['fund_id' => $fund->fund_id]);
+        $sum = $query->select(['summ' =>$query->func()->sum('trans_num_shares')]);
+        $totalShares = $sum->first();
+        
+        return $totalShares['summ'];
+    }
+    
+    public function getSumSharesByFundId($fund_id) {
+        
+        $fundController = $this->_registry->getController();
+        $fundController->loadModel('Transactions');
+        $query = $fundController->Transactions->find('all')->where(['fund_id' => $fund_id]);
+        $sum = $query->select(['summ' =>$query->func()->sum('trans_num_shares')]);
+        $totalShares = $sum->first();
+        
+        return $totalShares['summ'];
+    }
     
     public function getFundPrice($symbol) {
         $http = new Client();

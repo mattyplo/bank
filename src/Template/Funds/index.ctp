@@ -25,7 +25,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($funds as $fund): ?>
+            
+            
+            <?php foreach ($funds_num_shares as $fund): ?>
             <tr> 
                 <td><?= h($fund->fund_index) ?></td>
                 <td><?= h($fund->fund_name) ?></td>
