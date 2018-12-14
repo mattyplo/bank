@@ -150,16 +150,6 @@ class FundsController extends AppController
                 $month = $dat['month']['month'];
                 $day = $dat['day']['day'];
                 $now = $year . "-" . $month . "-" . $day;
-                /*
-                $transactionsTable = TableRegistry::get('Transactions');
-                $transaction = $transactionsTable->newEntity(); 
-                $transaction->trans_date = $now;
-                $transaction->trans_amt = $fund->fund_crnt_value;
-                $transaction->trans_num_shares = $fund->num_shares;
-                $transaction->fund_id = $id;
-                $transaction->trans_type_id = 5;
-                $transactionsTable->save($transaction);
-                */
                 
                 
                 $data = [
@@ -229,6 +219,13 @@ class FundsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $fund = $this->Funds->get($id);
+        
+        //delete all associated transactions
+        $this->loadModel('Transactions');
+        $this->Transactions->deleteAll(['fund_id' => $id]);
+        
+        
+        
         if ($this->Funds->delete($fund)) {
             $this->Flash->success(__('The fund has been deleted.'));
         } else {
