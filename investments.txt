@@ -84,7 +84,7 @@ $163.85 dividend PABAX shares-10.687 @15.33
 $28.88 dividend PACAX shares-2.639 @10.94
 
 Jan 8th, 2018
-$1,146.93 Buy VOE shares-13.0 @113.61
+$1,476.93 Buy VOE shares-13.0 @113.61
 
 Jan 22nd, 2018
 $5.12 dividend PACAX shares-.465 @11.02
@@ -127,3 +127,18 @@ $5.5 dividend PACAX shares-.509 @10.8
 Sept 20th, 2018
 $5.51 dividend PACAX shares-.510 @10.81
 $14.48 dividend PABAX shares-.929 @15.59
+
+Oct 3rd, 2018
+$10.25 dividend VOE shares-.09 @113.27
+
+Oct 22nd, 2018
+$5.51 dividend PACAX shares-.522 @10.55
+
+Nov 15th, 2018
+$4,000 Buy FGRAX shares-97.229 @41.14
+
+Nov 20th, 2018
+$5.52 dividend PACAX shares-.528 @10.46
+
+Dec 5th, 2018
+$92.05 dividend FKGRX shares-.918 @100.24

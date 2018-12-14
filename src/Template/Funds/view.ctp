@@ -46,45 +46,12 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Fund Crnt Value') ?></th>
-            <td><?= $response["Global Quote"]["05. price"]; ?></td>
+            <td><?= h($fund->fund_crnt_value) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Num Shares') ?></th>
             <td><?= $this->Number->format($fund->num_shares) ?></td>
         </tr>
     </table>
-    <?= $price; ?>
-    <?php foreach($response as $res) {
-    $poop = json_encode($res); 
-    echo $poop;
-    echo "<br>";
-}
-    ?>
-    <?php
-    
-    foreach ($response as $res) {
-        foreach ($res as $r) {
-            echo $r;
-            echo "\n";
-        } 
-        
-    }
-    
-    
-    
-    ?>
-   
-        <?= $response["Global Quote"]["01. symbol"]; ?>
-        <?= $response["Global Quote"]["02. open"]; ?>
-        <?= $response["Global Quote"]["03. high"]; ?>
-        <?= $response["Global Quote"]["04. low"]; ?>
-        <?= $response["Global Quote"]["05. price"]; ?>
-        
-    
-    <?php $stuff = json_encode($response); ?>
-    <?= $stuff; ?>
-    
-    <?php var_dump($stuff); ?>
-    
-    
+ 
 </div>

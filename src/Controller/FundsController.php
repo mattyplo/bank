@@ -67,6 +67,9 @@ class FundsController extends AppController
         $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' . $fundIndex . '&apikey=L1G9JSZ77QFGSV8A');
         $json = $response->json;
         
+        // Update the fund_crnt_value of the current fund and save it to the database
+        $fund->fund_crnt_value = $json["Global Quote"]["05. price"];
+        $this->Funds->save($fund); 
         
         $this->set('response', $json); 
         $this->set('price', $totalShares);
