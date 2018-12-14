@@ -31,18 +31,19 @@ class FundsController extends AppController
         
         $user = $this->Auth->user('user_id'); 
         $query = $this->Funds->find('all')->where(['users.user_id' => $user]);
-        //$funds = $this->paginate($this->Funds);
         $this->set('funds', $this->paginate($query));
         
         //This chunk of code gets an updated count of the number of shares each fund is comprised of and puts it in an array called $funds
         $funds = $query->toArray();
-        //die($funds);
         foreach ($funds as $fund) {
             $fund_id = $fund['fund_id'];
             $fund['num_shares'] = $this->FundLookup->getSumSharesByFundId($fund_id);
-            //echo $fund['num_shares'];
         }
         
+        //Get the total value of the portfolio
+        $totalPortfolioValue = $this->FundLookup->getPortfolioValue($funds);
+        
+        $this->set('totalPortfolioValue', $totalPortfolioValue);
         $this->set('funds_num_shares', $funds);
         $this->set(compact('funds'));
     }
@@ -67,11 +68,11 @@ class FundsController extends AppController
         $response = $http->get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' . $fundIndex . '&apikey=L1G9JSZ77QFGSV8A');
         $json = $response->json;
         
-        // Update the fund_crnt_value of the current fund and save it to the database
+        // Update the fund_crnt_value and num_shares of the current fund and save it to the database
         $fund->fund_crnt_value = $json["Global Quote"]["05. price"];
+        $fund->num_shares = $totalShares;
         $this->Funds->save($fund); 
         
-        $this->set('response', $json); 
         $this->set('price', $totalShares);
         $this->set('fund', $fund);
     }
