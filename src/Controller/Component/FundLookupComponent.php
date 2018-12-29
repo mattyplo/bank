@@ -67,6 +67,23 @@ class FundLookupComponent extends Component
         
         return $totalValue;
     }
+    
+   
+    
+    
+    public function getTotalAmountInvested($funds, $user) {
+        $fundController = $this->_registry->getController();
+        $fundController->loadModel('Transactions');
+        $query = $fundController->Transactions->find('all')->where(['trans_type_id' => 5]);
+        //echo $user;
+        
+        $query->matching('Funds', function ($q) use ($user) {
+            return $q->where(['Funds.user_id' => $user]);
+        });
+        $sum = $query->select(['total' => $query->func()->sum('trans_amt')]);
+        $totalAmtInvested = $sum->first();
+        return $totalAmtInvested['total'];
+    }
 }
 
 ?>

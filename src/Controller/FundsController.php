@@ -40,9 +40,12 @@ class FundsController extends AppController
             $fund['num_shares'] = $this->FundLookup->getSumSharesByFundId($fund_id);
         }
         
+        
         //Get the total value of the portfolio
         $totalPortfolioValue = $this->FundLookup->getPortfolioValue($funds);
+        $totalAmtInvested = $this->FundLookup->getTotalAmountInvested($funds, $user);
         
+        $this->set('totalAmtInvested', $totalAmtInvested);
         $this->set('totalPortfolioValue', $totalPortfolioValue);
         $this->set('funds_num_shares', $funds);
         $this->set(compact('funds'));
@@ -224,8 +227,6 @@ class FundsController extends AppController
         $this->loadModel('Transactions');
         $this->Transactions->deleteAll(['fund_id' => $id]);
         
-        
-        
         if ($this->Funds->delete($fund)) {
             $this->Flash->success(__('The fund has been deleted.'));
         } else {
@@ -260,7 +261,7 @@ class FundsController extends AppController
             //die($fund['fund_name']);
             $data = [
                     'trans_date' => $date,
-                    'trans_amt' => $request['trans_amt'],
+                    'trans_amt' => $request['price_per_share'],
                     'trans_num_shares' => $request['num_shares'],
                     'fund_id' => $fund['fund_id'],
                     'trans_type_id' => 6 

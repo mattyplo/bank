@@ -142,3 +142,13 @@ $5.52 dividend PACAX shares-.528 @10.46
 
 Dec 5th, 2018
 $92.05 dividend FKGRX shares-.918 @100.24
+
+Dec 6th, 2018
+$3411.25 Buy VWEHX shares-614.64 @5.55
+
+Dec 19th, 2018
+$404.96 Dividend FGRAX shares-12.647 @32.02
+
+Dec 20th, 2018
+$214.26 Dividend PABAX shares-16.244 @13.19
+$95.66 Dividend PACAX shares-9.585 @9.98
