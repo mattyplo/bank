@@ -42,6 +42,16 @@ class FundsControllerTest extends IntegrationTestCase
     }
 
     /**
+     * Test lookUp method
+     *
+     * @return void
+     */
+    public function testLookUp()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test add method
      *
      * @return void
@@ -67,6 +77,26 @@ class FundsControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testDelete()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test addDividend method
+     *
+     * @return void
+     */
+    public function testAddDividend()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test isAuthorized method
+     *
+     * @return void
+     */
+    public function testIsAuthorized()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

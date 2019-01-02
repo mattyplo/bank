@@ -10,6 +10,8 @@ use Cake\TestSuite\Fixture\TestFixture;
 class FundTypesFixture extends TestFixture
 {
 
+    
+    
     /**
      * Fields
      *
