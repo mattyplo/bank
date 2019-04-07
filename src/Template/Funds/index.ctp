@@ -15,6 +15,7 @@
 <div class="funds index large-9 medium-8 columns content">
     <h3><?= __('Funds') ?></h3>
     <h2>Total Value = $<?= $totalPortfolioValue ?></h2>
+    <h2>Total Amount Invested = $<?= $totalAmtInvested ?></h2>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

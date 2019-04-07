@@ -17,7 +17,7 @@
         <?php
             
             echo $this->Form->control('fund_index', ['options' => $funds->extract('fund_index')]);
-            echo $this->Form->control('trans_amt');
+            echo $this->Form->control('price per share');
             echo $this->Form->control('num_shares');
             echo $this->Form->year('year', [
                 'empty' => 'year',
